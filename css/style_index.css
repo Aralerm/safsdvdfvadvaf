@@ -140,3 +140,8 @@ body
     flex-flow: column nowrap;
     justify-content: center;
 }
+
+.pressed
+{
+    padding: 5px;
+}
