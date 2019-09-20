@@ -29,22 +29,26 @@ class Bonus
         
         document.querySelector("#"+this.id).addEventListener("click", () =>
         {
-            factor *= this.factor;
-            this.own += 1;
-            this.cost += Math.round(this.cost * 0.1);
-            this.factor += 0.2;
-            refresh();
-            document.querySelector("#"+this.id+" #multiply_counter").textContent = this.own;
-            document.querySelector("#"+this.id+" #multiply_cost").textContent = this.cost;
-            document.querySelector("#"+this.id+" #multiply_factor").textContent = this.factor;
+            if (counter >= this.cost)
+            {
+                this.own += 1;
+                this.cost += Math.round(this.cost * 0.1);
+                this.factor += 0.2;
+                refresh();
+                document.querySelector("#"+this.id+" #multiply_counter").textContent = this.own;
+                document.querySelector("#"+this.id+" #multiply_cost").textContent = this.cost;
+                document.querySelector("#"+this.id+" #multiply_factor").textContent = this.factor;
 
-            this.update();
+                this.update();
+            }
         });
     }
     update()
     {
+        counter -= this.cost;
         factor = this.factor;
+        refresh();
     }
 }
 
-let bonusOne = new Bonus("Адин", 100, 1.1, "bonusOne");
+let bonusOne = new Bonus("Адин", 10, 1.1, "bonusOne");
