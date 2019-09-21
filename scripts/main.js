@@ -18,7 +18,7 @@ class Bonus
         this.id = id;
         this.automate = automate;
 
-        let tags = '<a class="bonus" id="'+id+'" href="#"> <h2>'+this.name+'</h2> <p> ИМЕЕТСЯ: <span id="multiply_counter">'+this.own+'</span> </p> <p> ЦЕНА: <span id="multiply_cost">'+this.cost+'</span> </p> <p> МНОЖИТЕЛЬ: <span id="multiply_factor">'+this.factor+'</span> </p> </a>';
+        let tags = '<div class="'+this.id+' bonus" href="#"> <h2>'+this.name+'</h2> <p> ИМЕЕТСЯ: <span class="multiply_counter">'+this.own+'</span> </p> <p> ЦЕНА: <span class="multiply_cost">'+this.cost+'</span> </p> <p> МНОЖИТЕЛЬ: <span class="multiply_factor">'+this.factor+'</span> </p> </div>';
         document.querySelector(".b-three").innerHTML += tags;
 
         if (this.automate == true)
@@ -30,8 +30,8 @@ class Bonus
             }, 1 * 1000);
         }
 
-        this.element = document.querySelector("#"+this.id);
-        this.element.addEventListener("click", () => { this.buy(); });
+        this.element = document.querySelector("."+this.id);
+        this.init();
     }
 
     buy()
@@ -49,16 +49,21 @@ class Bonus
 
     refresh()
     {
-        document.querySelector("#"+this.id+" #multiply_counter").textContent = this.own;
-        document.querySelector("#"+this.id+" #multiply_cost").textContent = this.cost;
-        document.querySelector("#"+this.id+" #multiply_factor").textContent = this.factor;
+        document.querySelector("."+this.id+" .multiply_counter").textContent = this.own;
+        document.querySelector("."+this.id+" .multiply_cost").textContent = this.cost;
+        document.querySelector("."+this.id+" .multiply_factor").textContent = this.factor;
         document.querySelector("#counter").textContent = counter;
+    }
+
+    init()
+    {
+        this.element.addEventListener('click', () => { this.buy(); });
+        this.refresh();
     }
 }
 
-let bonusOne = new Bonus("Тыкалка 1", 10, 1.1, "bonusOne", false);
-
-let bonusTwo = new Bonus("Автомат", 20, 1, "bonusTwo", true);
-
-console.log(bonusOne.element);
-console.log(bonusTwo.element);
+// (name, cost, factor, id, automate~) 
+let one = new Bonus('one', 10, 1.1, 'o', false);
+let two = new Bonus('two', 20, 1, 't', true);
+let three = new Bonus('three', 30, 1.2, 'r', false);
+let four = new Bonus('four', 40, 1.3, 'f', true);
