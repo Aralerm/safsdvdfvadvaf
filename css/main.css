@@ -24,19 +24,26 @@ body
 {
     font-family: "Pixel Cyr", normal;
 
-    min-width: 320px;
-
     color: #FFFFFF;
     text-shadow: 3px 2px 0 rgba(0, 0, 0, 1);
 
     image-rendering: pixelated;
 }
 
-#main
+#content
 {
     display: flex;
 
-    animation: backgroundAnimate 25s linear infinite;
+    max-width: 2560px;
+    margin: 0 auto;
+
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#main
+{
+    animation: backgroundAnimate 15s linear infinite;
 
     background-image: url("../img/background.png");
     background-attachment: fixed;
@@ -44,8 +51,6 @@ body
     background-size: auto 100%;
 
     background-repeat-y: no-repeat;
-    flex-flow: row wrap;
-    justify-content: center;
 }
 
 @keyframes backgroundAnimate
@@ -83,7 +88,7 @@ body
     flex-grow: 1;
 }
 
-.b-one
+.b-one, .b-four
 {
     display: flex;
 
@@ -93,13 +98,14 @@ body
     background-image: url("../img/sprite_1.png");
     background-position: 100%;
     background-size: auto 100%;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 
     align-items: center;
     background-repeat-y: no-repeat;
     justify-content: center;
 }
 
-.b-one h1
+.b-one h1, .b-four h1
 {
     width: 100%;
 }
@@ -141,6 +147,7 @@ body
     background-image: url("../img/sprite_1.png");
     background-position: 100%;
     background-size: auto 100%;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 
     align-items: center;
     background-repeat-y: no-repeat;
@@ -148,29 +155,30 @@ body
     justify-content: center;
 }
 
-#counter
+#counter, #factor
 {
     font-size: 38px;
 
     padding-left: 10px;
 }
+
 @media screen and (max-width: 576px)
 {
-    .b-one
+    .b-one, .b-four
     {
         padding: 35px 15px 25px 15px;
 
         flex-flow: column nowrap;
     }
-    .b-one h1, .b-one span
+    .b-one h1, .b-one span, .b-four h1, .b-four span
     {
         text-align: center;
     }
-    .b-one h1
+    .b-one h1, .b-four h1
     {
         font-size: 23px;
     }
-    #counter
+    #counter, #factory
     {
         font-size: 28px;
     }

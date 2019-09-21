@@ -52,6 +52,7 @@ class Bonus
         document.querySelector("."+this.id+" .multiply_cost").textContent = (this.cost).toFixed(1);
         document.querySelector("."+this.id+" .multiply_factor").textContent = (this.factor).toFixed(1);
         document.querySelector("#counter").textContent = counter.toFixed(1);
+        document.querySelector("#factor").textContent = factor.toFixed(1);
     }
 
     listener()
@@ -62,8 +63,9 @@ class Bonus
 
 // (name, cost, factor, id, automate~) 
 let one = new Bonus('Улучшалка 1', 10, 1.1, 'one', false);
-let two = new Bonus('Автоматом', 100, 1, 'two', true);
+let two = new Bonus('Автомат 1', 100, 1, 'two', true);
 let three = new Bonus('Улучшалка 2', 1000, 10, 'three', false);
+let four = new Bonus('Автомат 2', 5000, 100, 'two', true);
 
 one.listener();
 two.listener();
