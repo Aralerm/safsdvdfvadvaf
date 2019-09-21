@@ -5,6 +5,12 @@ document.querySelector('#button').addEventListener('click', function()
 {
     counter += factor;
     document.querySelector("#counter").textContent = counter.toFixed(1);
+
+    let vfx = document.querySelector(".button-vfx");
+    vfx.style.backgroundImage = 'url("./img/buttonVfx.gif")';
+    setTimeout (function() {
+        vfx.style.backgroundImage = 'unset';
+    }, 200);
 });
 
 class Bonus
@@ -67,7 +73,6 @@ class Bonus
         vfx.style.backgroundImage = 'url("./img/bonusVfx.gif")';
         setTimeout (function() {
             vfx.style.backgroundImage = 'unset';
-            console.log('хуйгя');
         }, 100);
     }
 }
