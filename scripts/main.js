@@ -4,7 +4,7 @@ let factor = 1;
 document.querySelector('#button').addEventListener('click', function()
 {
     counter += factor;
-    document.querySelector("#counter").textContent = counter;
+    document.querySelector("#counter").textContent = counter.toFixed(1);
 });
 
 class Bonus
@@ -48,10 +48,10 @@ class Bonus
 
     refresh()
     {
-        document.querySelector("."+this.id+" .multiply_counter").textContent = this.own;
-        document.querySelector("."+this.id+" .multiply_cost").textContent = this.cost;
-        document.querySelector("."+this.id+" .multiply_factor").textContent = this.factor;
-        document.querySelector("#counter").textContent = counter;
+        document.querySelector("."+this.id+" .multiply_counter").textContent = (this.own).toFixed(1);
+        document.querySelector("."+this.id+" .multiply_cost").textContent = (this.cost).toFixed(1);
+        document.querySelector("."+this.id+" .multiply_factor").textContent = (this.factor).toFixed(1);
+        document.querySelector("#counter").textContent = counter.toFixed(1);
     }
 
     listener()
@@ -61,12 +61,10 @@ class Bonus
 }
 
 // (name, cost, factor, id, automate~) 
-let one = new Bonus('one', 10, 1.1, 'o', false);
-let two = new Bonus('two', 20, 1, 't', true);
-let three = new Bonus('three', 30, 1.2, 'r', false);
-let four = new Bonus('four', 40, 1.3, 'f', true);
+let one = new Bonus('Улучшалка 1', 10, 1.1, 'one', false);
+let two = new Bonus('Автоматом', 100, 1, 'two', true);
+let three = new Bonus('Улучшалка 2', 1000, 10, 'three', false);
 
 one.listener();
 two.listener();
 three.listener();
-four.listener();
