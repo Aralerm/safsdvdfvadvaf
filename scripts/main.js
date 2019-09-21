@@ -20,6 +20,8 @@ class Bonus
 
         let tags = '<div class="'+this.id+' bonus" href="#"> <h2>'+this.name+'</h2> <p> ИМЕЕТСЯ: <span class="multiply_counter">'+this.own+'</span> </p> <p> ЦЕНА: <span class="multiply_cost">'+this.cost+'</span> </p> <p> МНОЖИТЕЛЬ: <span class="multiply_factor">'+this.factor+'</span> </p> </div>';
         document.querySelector(".b-three").innerHTML += tags;
+        
+        this.element = document.querySelector("."+this.id);
 
         if (this.automate == true)
         {
@@ -29,9 +31,6 @@ class Bonus
                 this.refresh();    
             }, 1 * 1000);
         }
-
-        this.element = document.querySelector("."+this.id);
-        this.init();
     }
 
     buy()
@@ -55,10 +54,9 @@ class Bonus
         document.querySelector("#counter").textContent = counter;
     }
 
-    init()
+    listener()
     {
-        this.element.addEventListener('click', () => { this.buy(); });
-        this.refresh();
+        document.querySelector("."+this.id).addEventListener('click', () => { this.buy(); });
     }
 }
 
@@ -67,3 +65,8 @@ let one = new Bonus('one', 10, 1.1, 'o', false);
 let two = new Bonus('two', 20, 1, 't', true);
 let three = new Bonus('three', 30, 1.2, 'r', false);
 let four = new Bonus('four', 40, 1.3, 'f', true);
+
+one.listener();
+two.listener();
+three.listener();
+four.listener();
