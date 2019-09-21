@@ -40,7 +40,7 @@ class Bonus
             counter -= this.cost;
             factor += this.factor; 
             this.own += 1;
-            this.factor += 0.1;
+            this.factor += (this.factor * 0.2);
             this.cost *= 1.2;
             this.refresh();
         }
