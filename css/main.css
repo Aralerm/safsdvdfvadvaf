@@ -1,0 +1,122 @@
+@font-face
+{
+    font-family: "Pixel Cyr";
+    font-weight: normal;
+    font-style: normal;
+
+    src: url("../fonts/PixelCyrNormal.ttf");
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, head, body, #main
+{
+    width: 100%;
+    min-height: 100vh;
+}
+
+body
+{
+    font-family: "Pixel Cyr", normal;
+
+    color: #FFFFFF;
+    text-shadow: 3px 2px 0 rgba(0, 0, 0, 1);
+
+    image-rendering: pixelated;
+}
+
+#main
+{
+    display: flex;
+
+    background-image: url("../img/background.png");
+    background-attachment: fixed;
+    background-size: auto 100%;
+
+    background-repeat-y: no-repeat;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.first
+{
+    display: flex;
+
+    height: 100%;
+    padding: 25px;
+
+    flex-flow: column nowrap;
+    flex-grow: 10;
+}
+
+.second
+{
+    height: 100%;
+    padding: 25px;
+
+    flex-grow: 1;
+}
+
+.b-one
+{
+    display: flex;
+
+    padding: 35px 25px 25px 25px;
+
+    border-radius: 25px;
+    background-image: url("../img/sprite_1.png");
+    background-position: 100%;
+    background-size: auto 100%;
+
+    align-items: center;
+    background-repeat-y: no-repeat;
+    justify-content: center;
+}
+
+.b-two
+{
+    display: flex;
+
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;;
+}
+
+#button
+{
+    width: 100%;
+    height: 300px;
+    margin: 100px 25px;
+
+    cursor: pointer;
+
+    background-image: url("../img/ring.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.bonus
+{
+    display: flex;
+
+    margin-bottom: 25px;
+    padding: 65px 45px 35px 45px;
+
+    cursor: pointer;
+
+    border-radius: 25px;
+    background-image: url("../img/sprite_1.png");
+    background-position: 100%;
+    background-size: auto 100%;
+
+    align-items: center;
+    background-repeat-y: no-repeat;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
