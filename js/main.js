@@ -10,7 +10,7 @@ document.querySelector('#button').addEventListener('click', function()
     vfx.style.backgroundImage = 'url("./img/buttonVfx.gif")';
     setTimeout (function() {
         vfx.style.backgroundImage = 'unset';
-    }, 200);
+    }, 100);
 });
 
 class Bonus
