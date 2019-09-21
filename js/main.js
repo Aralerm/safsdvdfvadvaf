@@ -81,7 +81,7 @@ class Bonus
 let one = new Bonus('Улучшалка 1', 10, 1.1, 'one', false);
 let two = new Bonus('Автомат 1', 100, 1, 'two', true);
 let three = new Bonus('Улучшалка 2', 1000, 10, 'three', false);
-let four = new Bonus('Автомат 2', 1, 5000, 'four', true);
+let four = new Bonus('Автомат 2', 5000, 100, 'four', true);
 
 one.listener();
 two.listener();
