@@ -12,6 +12,7 @@ document.querySelector('#button').addEventListener('click', function()
     setTimeout (function() {
         vfx.style.backgroundImage = 'unset';
     }, 100);
+    saveMain();
 });
 
 class Bonus
@@ -111,8 +112,10 @@ two.listener();
 three.listener();
 four.listener();
 
-setInterval(() => {
-    localStorage.setItem('counter', counter);
+function saveMain() {
+    localStorage.setItem('counter', parseInt(counter));
     localStorage.setItem('factor', factor);
     localStorage.setItem('background', background);
-}, 2500);
+}
+
+setInterval(saveMain, 1000);
