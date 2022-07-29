@@ -1,10 +1,11 @@
 let counter = 0;
 let factor = 1;
+let background = 0;
 
 document.querySelector('#button').addEventListener('click', function()
 {
     counter += factor;
-    document.querySelector("#counter").textContent = counter.toFixed(1);
+    document.querySelector("#counter").textContent = parseInt(counter);
 
     let vfx = document.querySelector(".button-vfx");
     vfx.style.backgroundImage = 'url("./img/buttonVfx.gif")';
@@ -24,7 +25,7 @@ class Bonus
         this.id = id;
         this.automate = automate;
 
-        let tags = '<div class="'+this.id+' bonus" href="#"> <div class="bunus-vfx"></div> <h2>'+this.name+'</h2> <p> ИМЕЕТСЯ: <span class="multiply_counter">'+this.own+'</span> </p> <p> ЦЕНА: <span class="multiply_cost">'+this.cost+'</span> </p> <p> МНОЖИТЕЛЬ: <span class="multiply_factor">'+this.factor+'</span> </p> </div>';
+        let tags = '<div class="'+this.id+' bonus" href="#"> <div class="bunus-vfx"></div> <h2>'+this.name+'</h2> <p> ИМЕЕТСЯ: <span class="multiply_counter">'+this.own+'</span> </p> <p> ЦЕНА: <span class="multiply_cost">'+this.cost+'</span> </p> </div>';
         document.querySelector(".b-three").innerHTML += tags;
         
         this.element = document.querySelector("."+this.id);
@@ -33,7 +34,7 @@ class Bonus
         {
             setInterval(() =>
             {
-                counter += (this.own * this.factor);
+                counter += background;
                 this.refresh();    
             }, 1 * 1000);
         }
@@ -43,23 +44,32 @@ class Bonus
     {
         if (counter >= this.cost)
         {
-            this.animation();
-            counter -= this.cost;
-            factor += this.factor;
+            if (this.automate)
+            {
+                this.animation();
+                background += this.factor;
+            }
+            else
+            {
+                counter -= this.cost;
+                factor += this.factor;
+            }
+
             this.own += 1;
-            this.factor += (this.factor * 0.2);
-            this.cost *= 1.2;
+            this.factor += 0.1;
+            this.cost *= 1.5;
             this.refresh();
         }
     }
 
     refresh()
     {
-        document.querySelector("."+this.id+" .multiply_counter").textContent = (this.own).toFixed(1);
-        document.querySelector("."+this.id+" .multiply_cost").textContent = (this.cost).toFixed(1);
+        document.querySelector("."+this.id+" .multiply_counter").textContent = (this.own).toFixed(0);
+        document.querySelector("."+this.id+" .multiply_cost").textContent = (this.cost).toFixed(0);
         document.querySelector("."+this.id+" .multiply_factor").textContent = (this.factor).toFixed(1);
-        document.querySelector("#counter").textContent = counter.toFixed(1);
+        document.querySelector("#counter").textContent = parseInt(counter);
         document.querySelector("#factor").textContent = factor.toFixed(1);
+        document.querySelector("#background").textContent = background.toFixed(0);
     }
 
     listener()
@@ -78,10 +88,12 @@ class Bonus
 }
 
 // (name, cost, factor, id, automate~) 
-let one = new Bonus('Улучшалка 1', 10, 1.1, 'one', false);
-let two = new Bonus('Автомат 1', 100, 1, 'two', true);
-let three = new Bonus('Улучшалка 2', 1000, 10, 'three', false);
-let four = new Bonus('Автомат 2', 5000, 100, 'four', true);
+let one = new Bonus('Немного улучшить клик', 10, 0.1, 'one', false);
+let two = new Bonus('Слабая автоматическая добывалка', 100, 1, 'two', true);
+let three = new Bonus('Сильно улучшить клик', 1000, 1.1, 'three', false);
+let four = new Bonus('Сильная автоматическая добывалка', 5000, 10, 'four', true);
+let five = new Bonus('Суперски улучшить клик', 10000, 10.1, 'five', false);
+let six = new Bonus('Супер автоматическая добывалка', 50000, 100, 'six', true);
 
 one.listener();
 two.listener();
