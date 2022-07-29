@@ -16,7 +16,7 @@ document.querySelector('#button').addEventListener('click', function()
 
 class Bonus
 {
-    constructor(name, cost, factor, id, automate) 
+    constructor(name, cost, factor, id, automate, own = 0) 
     {
         this.name = name;
         this.cost = cost;
@@ -38,22 +38,31 @@ class Bonus
                 this.refresh();    
             }, 1 * 1000);
         }
+
+        for (let i = 0; i < own; i++)
+        {
+            this.buy(true);
+        }
     }
 
-    buy()
+    buy(instant = false)
     {
-        if (counter >= this.cost)
+        if (counter >= this.cost || instant)
         {
             if (this.automate)
-            {
-                this.animation();
                 background += this.factor;
-            }
-            else
+            else 
+                factor += this.factor;
+
+
+
+
+            if (!instant)
             {
                 counter -= this.cost;
-                factor += this.factor;
+                this.animation();
             }
+                
 
             this.own += 1;
             this.factor += 0.1;
@@ -66,7 +75,7 @@ class Bonus
     {
         document.querySelector("."+this.id+" .multiply_counter").textContent = (this.own).toFixed(0);
         document.querySelector("."+this.id+" .multiply_cost").textContent = (this.cost).toFixed(0);
-        document.querySelector("."+this.id+" .multiply_factor").textContent = (this.factor).toFixed(1);
+        //document.querySelector("."+this.id+" .multiply_factor").textContent = (this.factor).toFixed(1);
         document.querySelector("#counter").textContent = parseInt(counter);
         document.querySelector("#factor").textContent = factor.toFixed(1);
         document.querySelector("#background").textContent = background.toFixed(0);
