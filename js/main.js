@@ -1,6 +1,6 @@
-let counter = 0;
-let factor = 1;
-let background = 0;
+let counter = (localStorage.getItem('counter')) ? parseInt(localStorage.getItem('counter')) : 0;
+let factor  = (localStorage.getItem('factor')) ? parseInt(localStorage.getItem('factor')) : 1;
+let background = (localStorage.getItem('background')) ? parseInt(localStorage.getItem('background')) : 0;
 
 document.querySelector('#button').addEventListener('click', function()
 {
@@ -68,6 +68,8 @@ class Bonus
             this.factor += 0.1;
             this.cost *= 1.5;
             this.refresh();
+
+            localStorage.setItem(this.id, this.own);
         }
     }
 
@@ -97,14 +99,20 @@ class Bonus
 }
 
 // (name, cost, factor, id, automate~) 
-let one = new Bonus('Немного улучшить клик', 10, 0.1, 'one', false);
-let two = new Bonus('Слабая автоматическая добывалка', 100, 1, 'two', true);
-let three = new Bonus('Сильно улучшить клик', 1000, 1.1, 'three', false);
-let four = new Bonus('Сильная автоматическая добывалка', 5000, 10, 'four', true);
-let five = new Bonus('Суперски улучшить клик', 10000, 10.1, 'five', false);
-let six = new Bonus('Супер автоматическая добывалка', 50000, 100, 'six', true);
+let one = new Bonus('Немного улучшить клик', 10, 0.1, 'one', false, (localStorage.getItem('one')) ? parseInt(localStorage.getItem('one')) : 0);
+let two = new Bonus('Слабая автоматическая добывалка', 100, 1, 'two', true, (localStorage.getItem('two')) ? parseInt(localStorage.getItem('two')) : 0);
+let three = new Bonus('Сильно улучшить клик', 1000, 1.1, 'three', false, (localStorage.getItem('three')) ? parseInt(localStorage.getItem('three')) : 0);
+let four = new Bonus('Сильная автоматическая добывалка', 5000, 10, 'four', true, (localStorage.getItem('four')) ? parseInt(localStorage.getItem('four')) : 0);
+let five = new Bonus('Суперски улучшить клик', 10000, 10.1, 'five', false, (localStorage.getItem('five')) ? parseInt(localStorage.getItem('five')) : 0);
+let six = new Bonus('Супер автоматическая добывалка', 50000, 100, 'six', true, (localStorage.getItem('six')) ? parseInt(localStorage.getItem('six')) : 0);
 
 one.listener();
 two.listener();
 three.listener();
 four.listener();
+
+setInterval(() => {
+    localStorage.setItem('counter', counter);
+    localStorage.setItem('factor', factor);
+    localStorage.setItem('background', background);
+}, 2500);
