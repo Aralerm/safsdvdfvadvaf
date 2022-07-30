@@ -116,8 +116,6 @@ six.listener();
 
 function saveMain() {
     localStorage.setItem('counter', parseInt(counter));
-    localStorage.setItem('factor', factor);
-    localStorage.setItem('background', background);
 }
 
 setInterval(saveMain, 1000);
