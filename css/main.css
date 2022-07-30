@@ -93,7 +93,7 @@ body
 .b-wrapper {
     display: flex;
     flex-flow: row wrap;
-    gap: 0 15px;
+    gap: 35px 15px;
 }
 
 .b-one, .b-four
@@ -102,17 +102,33 @@ body
 
     padding: 35px 65px 25px 65px;
 
-    border-radius: 25px;
+    border-radius: 0px;
     background-image: url("../img/sprite_1.png");
     background-position: 100%;
-    background-size: auto 100%;
+    background-size: 600px;
     box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 
     align-items: center;
-    background-repeat-y: no-repeat;
     justify-content: flex-start;
+
+    border-radius: 5px;
+
+    position: relative;
 }
 
+.b-one::after, .b-four::after, .bonus::after
+{
+    position: absolute;
+    content: '';
+    top: -20px;
+    left: -5;
+    background-image: url("../img/sprite_1_grass.png");
+    background-image: url(../img/sprite_1_grass.png);
+    height: 40px;
+    width: calc(100% + 10px);
+    background-size: auto 100%;
+    border-radius: 5px;
+}
 .b-one, .b-four {
     min-width: 400px;
 }
@@ -191,20 +207,21 @@ body
     display: flex;
 
     margin-bottom: 25px;
-    padding: 65px 45px 35px 45px;
+    padding: 35px 45px 35px 45px;
 
     cursor: pointer;
 
-    border-radius: 25px;
+    border-radius: 0px;
     background-image: url("../img/sprite_1.png");
     background-position: 100%;
-    background-size: auto 100%;
+    background-size: 600px;
     box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 
     align-items: center;
-    background-repeat-y: no-repeat;
     flex-flow: column nowrap;
     justify-content: center;
+
+    border-radius: 5px;
 }
 
 .bonus > h2 {
