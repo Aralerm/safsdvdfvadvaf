@@ -30,14 +30,17 @@ body
     image-rendering: pixelated;
 }
 
+.flex-flow {
+    display: flex;
+    flex-flow: row nowrap;
+}
 #content
 {
     display: flex;
-
-    max-width: 2560px;
     margin: 0 auto;
+    max-width: 1440px;
 
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
 }
 
@@ -74,7 +77,6 @@ body
     display: flex;
     position: sticky;
     top: 0;
-    height: 100vh;
     padding: 25px;
 
     flex-flow: column nowrap;
@@ -87,36 +89,30 @@ body
     padding: 25px;
 
     flex-grow: 1;
+    margin-top: -150px;
 }
 
 
 .b-wrapper {
     display: flex;
-    flex-flow: row wrap;
-    gap: 35px 15px;
+    flex-flow: column nowrap;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
-.b-one, .b-four
-{
+.b-one {
+    padding: 25px 40px;
     display: flex;
-
-    padding: 35px 65px 25px 65px;
-
-    border-radius: 0px;
-    background-image: url("../img/sprite_1.png");
-    background-position: 100%;
-    background-size: 600px;
-    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
-
-    align-items: center;
-    justify-content: flex-start;
-
-    border-radius: 5px;
-
-    position: relative;
+    flex-flow: column nowrap;
 }
 
-.b-one::after, .b-four::after, .bonus::after
+.b-one h1 {
+    margin-right: 25px;
+    flex-grow: 1;
+}
+
+.bonus::after
 {
     position: absolute;
     content: '';
@@ -148,13 +144,16 @@ body
 
     align-items: center;
     flex-flow: row wrap;
-    flex-grow: 1;
     justify-content: center;;
+
+    position: sticky;
+    top: 100px;
 }
 
 #button
 {
-    position: relative;
+    position: sticky;
+    top: 200px;
 
     width: 100%;
     height: 300px;
@@ -240,6 +239,14 @@ body
     padding-left: 10px;
 }
 
+@media screen and (max-width: 1224px)
+{
+    .second
+    {
+        max-width: 550px;
+    }
+}
+
 @media screen and (max-width: 1024px)
 {
     .b-one, .b-four, .bonus > p {
@@ -262,15 +269,26 @@ body
         width: 100%;
         min-width: auto !important;
     }
-    .first {
+    .first, .b-wrapper {
         height: 100%;
         position: static;
     }
-    #content, .b-wrapper {
+    #content, .b-wrapper, .flex-flow {
         flex-flow: column nowrap;
+    }
+    .second {
+        margin-top: 0;
+        width: 100%;
+        min-width: 100%;
     }
 }
 
+@media screen and (max-width: 768px)
+{
+    .second {
+        padding: 25px 0;
+    }
+}
 
 @media screen and (max-width: 576px)
 {
@@ -287,7 +305,7 @@ body
     }
     .b-one h1, .b-one span, .b-four h1, .b-four span
     {
-        text-align: center;
+        
     }
     .b-one h1, .b-four h1
     {
@@ -296,5 +314,14 @@ body
     #counter, #factory
     {
         font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 476px) {
+    .b-one h1 {
+        font-size: 16px;
+    }
+    .b-one span {
+        font-size: 18px;
     }
 }
