@@ -1,6 +1,6 @@
 let counter = (localStorage.getItem('counter')) ? parseInt(localStorage.getItem('counter')) : 0;
-let factor  = (localStorage.getItem('factor')) ? parseInt(localStorage.getItem('factor')) : 1;
-let background = (localStorage.getItem('background')) ? parseInt(localStorage.getItem('background')) : 0;
+let factor  = 1;
+let background = 0;
 
 document.querySelector('#button').addEventListener('click', function()
 {
@@ -111,6 +111,8 @@ one.listener();
 two.listener();
 three.listener();
 four.listener();
+five.listener();
+six.listener();
 
 function saveMain() {
     localStorage.setItem('counter', parseInt(counter));
