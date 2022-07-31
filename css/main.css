@@ -205,8 +205,8 @@ body
 
     display: flex;
 
-    margin-bottom: 25px;
-    padding: 35px 45px 35px 45px;
+    margin-bottom: -5px;
+    padding: 35px 45px 40px 45px;
 
     cursor: pointer;
 
